@@ -1,0 +1,4 @@
+[D-BUS Service]
+Name=org.linux_wrapper_starter.Helper1
+Exec=/usr/libexec/linux-wrapper-helper
+User=root

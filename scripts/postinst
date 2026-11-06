@@ -1,0 +1,19 @@
+#!/bin/sh
+set -e
+
+# Reload D-Bus configuration to recognize new services
+if [ -x /usr/bin/dbus-send ]; then
+    /usr/bin/dbus-send --system --type=method_call --dest=org.freedesktop.DBus / org.freedesktop.DBus.ReloadConfig || true
+fi
+
+# Update desktop database
+if [ -x /usr/bin/update-desktop-database ]; then
+    /usr/bin/update-desktop-database /usr/share/applications || true
+fi
+
+# Set permissions for helper
+if [ -f /usr/libexec/linux-wrapper-helper ]; then
+    chmod +x /usr/libexec/linux-wrapper-helper
+fi
+
+exit 0

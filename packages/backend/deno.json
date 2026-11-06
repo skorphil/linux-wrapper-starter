@@ -1,0 +1,12 @@
+{
+  "name": "@linux-wrapper-starter/backend",
+  "version": "0.1.0",
+  "exports": "./main.ts",
+  "tasks": {
+    "dev": "deno run --allow-net --allow-read --allow-env --allow-sys main.ts",
+    "start": "deno run --allow-net --allow-read --allow-env --allow-sys main.ts"
+  },
+  "imports": {
+    "dbus-next": "npm:dbus-next@^0.10.2"
+  }
+}

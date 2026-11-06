@@ -1,0 +1,18 @@
+{
+  "imports": {
+    "dbus-next": "npm:dbus-next@^0.10.2"
+  },
+  "desktop": {
+    "app": {
+      "name": "linux-wrapper-starter",
+      "identifier": "org.linux-wrapper-starter.app",
+      "icons": {
+        "linux": "./packages/frontend/public/icon.svg"
+      }
+    },
+    "backend": "webview",
+    "output": {
+      "linux": "./dist/linux-wrapper-starter"
+    }
+  }
+}

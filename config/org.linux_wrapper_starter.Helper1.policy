@@ -1,0 +1,16 @@
+<!DOCTYPE policyconfig PUBLIC "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
+ "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
+<policyconfig>
+  <vendor>linux-wrapper-starter Project</vendor>
+  <vendor_url>https://github.com/linux-wrapper-starter</vendor_url>
+
+  <action id="org.linux_wrapper_starter.Helper1.get-root-identity">
+    <description>Read the root identity via the privileged helper</description>
+    <message>Authentication is required to read the root identity</message>
+    <defaults>
+      <allow_any>no</allow_any>
+      <allow_inactive>no</allow_inactive>
+      <allow_active>auth_admin</allow_active>
+    </defaults>
+  </action>
+</policyconfig>

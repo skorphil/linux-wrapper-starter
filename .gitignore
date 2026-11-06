@@ -1,0 +1,41 @@
+# Deno
+node_modules/
+.deno/
+
+# React / Vite build output
+dist/
+dist-ssr/
+build/
+*.tsbuildinfo
+.vite/
+coverage/
+
+# Linux packaging artifacts
+*.deb
+*.rpm
+archive-*/
+debian/.debhelper/
+debian/files
+debian/*.substvars
+debian/*.log
+
+# Editor and OS files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+.env.*
+!.env.example
+*.local
+
+# Logs
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*

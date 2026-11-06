@@ -1,0 +1,8 @@
+{
+  "imports": {
+    "dbus-next": "npm:dbus-next@^0.10.2"
+  },
+  "tasks": {
+    "compile": "deno compile --allow-all --output ../../dist/linux-wrapper-helper main.ts"
+  }
+}

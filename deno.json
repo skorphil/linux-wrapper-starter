@@ -1,0 +1,18 @@
+{
+  "workspace": [
+    "./packages/backend",
+    "./packages/frontend",
+    "./packages/helper"
+  ],
+  "nodeModulesDir": "auto",
+  "tasks": {
+    "dev": "deno task dev:frontend & deno task dev:backend",
+    "dev:frontend": "deno task --cwd packages/frontend dev",
+    "dev:backend": "deno run --watch -A packages/backend/main.ts --url=http://localhost:5173",
+    "helper:install": "bash scripts/install-helper.sh",
+    "helper:uninstall": "bash scripts/uninstall-helper.sh",
+    "build": "deno task --cwd packages/frontend build && deno task --cwd packages/helper compile && deno desktop packages/backend/main.ts --config deno.desktop.json --include packages/frontend/dist --exclude-unused-npm --compress --allow-all",
+    "package:deb": "deno task build && deno run -A npm:@goreleaser/nfpm pkg --packager deb",
+    "package:rpm": "deno task build && deno run -A npm:@goreleaser/nfpm pkg --packager rpm"
+  }
+}

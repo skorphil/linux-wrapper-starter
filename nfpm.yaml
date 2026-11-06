@@ -1,0 +1,70 @@
+name: "linux-wrapper-starter"
+arch: "amd64"
+platform: "linux"
+version: "0.1.0"
+section: "utils"
+priority: "optional"
+maintainer: "Philipp Rich"
+description: "Blueprint for building secure GUI Linux applications with access to root commands"
+homepage: "https://github.com/skorphil/linux-wrapper-starter"
+license: "MIT"
+
+depends:
+  - "polkit"
+  - "dbus"
+
+overrides:
+  deb:
+    depends:
+      - "polkit"
+      - "dbus"
+      - "libwebkit2gtk-4.1-0"
+  rpm:
+    depends:
+      - "polkit"
+      - "dbus"
+      - "webkit2gtk4.1"
+
+contents:
+  # Application bundle
+  - src: "./dist/linux-wrapper-starter"
+    dst: "/usr/lib/linux-wrapper-starter"
+    file_info:
+      mode: 0755
+  
+  # Symlink to binary in PATH
+  - src: "/usr/lib/linux-wrapper-starter/linux-wrapper-starter"
+    dst: "/usr/bin/linux-wrapper-starter"
+    type: "symlink"
+  
+  # Helper binary
+  - src: "./dist/linux-wrapper-helper"
+    dst: "/usr/libexec/linux-wrapper-helper"
+    file_info:
+      mode: 0755
+      owner: "root"
+      group: "root"
+  
+  # D-Bus configuration
+  - src: "./config/org.linux_wrapper_starter.Helper1.conf"
+    dst: "/etc/dbus-1/system.d/org.linux_wrapper_starter.Helper1.conf"
+  
+  # D-Bus service
+  - src: "./config/org.linux_wrapper_starter.Helper1.service"
+    dst: "/usr/share/dbus-1/system-services/org.linux_wrapper_starter.Helper1.service"
+  
+  # Polkit policy
+  - src: "./config/org.linux_wrapper_starter.Helper1.policy"
+    dst: "/usr/share/polkit-1/actions/org.linux_wrapper_starter.Helper1.policy"
+  
+  # Desktop file
+  - src: "./packages/frontend/public/linux-wrapper-starter.desktop"
+    dst: "/usr/share/applications/linux-wrapper-starter.desktop"
+  
+  # Application icon
+  - src: "./packages/frontend/public/icon.svg"
+    dst: "/usr/share/icons/hicolor/scalable/apps/linux-wrapper-starter.svg"
+
+scripts:
+  postinstall: "./scripts/postinst"
+  preremove: "./scripts/prerm"

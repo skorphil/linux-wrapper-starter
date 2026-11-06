@@ -1,0 +1,7 @@
+#!/bin/sh
+set -e
+
+# Before removing, we could stop the service if it was running, 
+# but D-Bus services usually just idle exit.
+
+exit 0

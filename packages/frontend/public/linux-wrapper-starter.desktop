@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Linux Wrapper Starter
+Comment=Minimal blueprint for secure Linux desktop apps with Deno
+Exec=linux-wrapper-starter
+Icon=linux-wrapper-starter
+Type=Application
+Terminal=false
+Categories=Utility;Development;
