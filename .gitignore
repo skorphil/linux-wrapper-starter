@@ -1,6 +1,7 @@
 # Deno
 node_modules/
 .deno/
+/.deno-desktop/
 
 # React / Vite build output
 dist/

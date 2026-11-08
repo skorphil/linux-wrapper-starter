@@ -1,6 +1,6 @@
 import { getRootIdentity } from "./dbus-client.ts";
 
-const DEV_URL_ARG = Deno.args.find(arg => arg.startsWith("--url="))?.split("=")[1];
+const DEV_URL = Deno.env.get("VITE_DEV_URL");
 
 async function waitForUrl(url: string, timeoutMs = 10000) {
   const start = Date.now();
@@ -76,14 +76,14 @@ try {
   }
 }
 
-const APP_URL = DEV_URL_ARG || `http://127.0.0.1:${port}`;
+const APP_URL = DEV_URL || `http://127.0.0.1:${port}`;
 
 // Deno.BrowserWindow is experimental
 // deno-lint-ignore no-explicit-any
 const DenoAny = Deno as any;
 
 if (typeof DenoAny.BrowserWindow !== "undefined") {
-  if (DEV_URL_ARG) await waitForUrl(APP_URL);
+  if (DEV_URL) await waitForUrl(APP_URL);
 
   const win = new DenoAny.BrowserWindow({
     title: "Linux Wrapper Starter",

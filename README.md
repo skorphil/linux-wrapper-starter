@@ -14,7 +14,7 @@ operations from a Deno Desktop GUI (WebView) using the `D-Bus` system bus and `P
 - **[dbus-next](https://github.com/dbusjs/node-dbus-next)**: The high-performance TypeScript library for D-Bus integration in Deno.
 - **[nfpm](https://nfpm.goreleaser.com/)**: A simple, 0-dependency deb, rpm, apk and arch linux packager.
 
-## Development Mode (GUI in browser)
+## Development Mode (native window with HMR)
 
 1. **Install prerequisites**: `deno` and `dbus`.
 2. **Install the privileged helper**:
@@ -22,10 +22,15 @@ operations from a Deno Desktop GUI (WebView) using the `D-Bus` system bus and `P
    deno task helper:install
    ```
    *This compiles the helper and installs system-wide configuration files (requires sudo). See [Privileged Helper](#privileged-helper) for details.*
-3. **Run the application** (starts the Vite frontend and the Deno backend):
+3. **Run the application**:
    ```bash
    deno task dev
    ```
+   This starts the Vite frontend (`http://localhost:5173`) and opens the app in a native Deno Desktop window with hot module reload. `scripts/dev.ts` runs both processes and stops them together when the window closes or you press Ctrl+C.
+
+   The window loads the dev server URL from the `VITE_DEV_URL` environment variable. `deno task dev:desktop` starts only the desktop window and expects the frontend to already be running.
+
+**Browser fallback:** if the native window is not available, run `deno task dev:frontend` and open `http://localhost:5173` in a browser. This serves only the frontend. The backend bindings (`getMemoryUsage`, `getRootIdentity`) are provided by the Deno Desktop WebView, so D-Bus-backed features do not work in browser mode.
 
 ## Build Application (GUI in WebView)
 
