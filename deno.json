@@ -8,7 +8,7 @@
   "tasks": {
     "dev": "deno run --allow-run --allow-env scripts/dev.ts",
     "dev:frontend": "deno task --cwd packages/frontend dev",
-    "dev:desktop": "VITE_DEV_URL=http://localhost:5173 deno desktop --hmr -o .deno-desktop --config deno.desktop.json --allow-all packages/backend/main.ts",
+    "dev:desktop": "VITE_DEV_URL=http://127.0.0.1:5173 deno desktop --hmr -o .deno-desktop --config deno.desktop.json --allow-all packages/backend/main.ts",
     "helper:install": "bash scripts/install-helper.sh",
     "helper:uninstall": "bash scripts/uninstall-helper.sh",
     "build": "deno task --cwd packages/frontend build && deno task --cwd packages/helper compile && deno desktop packages/backend/main.ts --config deno.desktop.json --include packages/frontend/dist --exclude-unused-npm --compress --allow-all",

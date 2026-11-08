@@ -4,7 +4,7 @@
  * Both processes are terminated when either exits or on SIGINT/SIGTERM.
  */
 
-const DEV_URL = "http://localhost:5173";
+const DEV_URL = "http://127.0.0.1:5173";
 
 const frontend = new Deno.Command(Deno.execPath(), {
   args: ["task", "--cwd", "packages/frontend", "dev"],

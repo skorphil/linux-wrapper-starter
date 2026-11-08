@@ -26,11 +26,11 @@ operations from a Deno Desktop GUI (WebView) using the `D-Bus` system bus and `P
    ```bash
    deno task dev
    ```
-   This starts the Vite frontend (`http://localhost:5173`) and opens the app in a native Deno Desktop window with hot module reload. `scripts/dev.ts` runs both processes and stops them together when the window closes or you press Ctrl+C.
+   This starts the Vite frontend (`http://127.0.0.1:5173`) and opens the app in a native Deno Desktop window with hot module reload. `scripts/dev.ts` runs both processes and stops them together when the window closes or you press Ctrl+C.
 
    The window loads the dev server URL from the `VITE_DEV_URL` environment variable. `deno task dev:desktop` starts only the desktop window and expects the frontend to already be running.
 
-**Browser fallback:** if the native window is not available, run `deno task dev:frontend` and open `http://localhost:5173` in a browser. This serves only the frontend. The backend bindings (`getMemoryUsage`, `getRootIdentity`) are provided by the Deno Desktop WebView, so D-Bus-backed features do not work in browser mode.
+**Browser fallback:** if the native window is not available, run `deno task dev:frontend` and open `http://127.0.0.1:5173` in a browser. This serves only the frontend. The backend bindings (`getMemoryUsage`, `getRootIdentity`) are provided by the Deno Desktop WebView, so D-Bus-backed features do not work in browser mode.
 
 ## Build Application (GUI in WebView)
 
